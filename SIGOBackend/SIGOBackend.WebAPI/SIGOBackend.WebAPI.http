@@ -1,0 +1,6 @@
+@SIGOBackend.WebAPI_HostAddress = http://localhost:5078
+
+GET {{SIGOBackend.WebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
