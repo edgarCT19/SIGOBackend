@@ -13,10 +13,16 @@ namespace SIGOBackend.Application.Repositories
         {
             _usuarios = context.Usuarios;
         }
+        
 
         public async Task<Usuario> GetByIdAsync(Guid id)
         {
             return await _usuarios.Find(u => u.Id == id).FirstOrDefaultAsync();
+        }
+
+        public async Task<Usuario> GetByCorreoAsync(string userName)
+        {
+            return await _usuarios.Find(u => u.Correo == userName).FirstOrDefaultAsync();
         }
 
         public async Task<Usuario> GetByUsuarioAsync(string usuario)
