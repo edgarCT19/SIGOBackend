@@ -14,7 +14,6 @@ public class AuthService : IAuthService
 
     public async Task<LoginResponseDTO> Login(LoginResponseDTO loginDto)
     {
-
         return await Task.FromResult(new LoginResponseDTO());
     }
 }
