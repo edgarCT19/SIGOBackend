@@ -1,6 +1,12 @@
-﻿namespace SIGOBackend.WebAPI.Controllers;
+﻿using Microsoft.AspNetCore.Mvc;
+using SIGOBackend.Application.Services;
 
-public class AuthController
+namespace SIGOBackend.WebAPI.Controllers
 {
-    
+    [ApiController]
+    [Route("api/[controller]")]
+    public class AuthController : ControllerBase
+    {
+        
+    }
 }

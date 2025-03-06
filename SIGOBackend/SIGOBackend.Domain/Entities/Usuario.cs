@@ -7,7 +7,7 @@ public class Usuario
     public Guid Id { get; set; }
 
     [BsonRepresentation(BsonType.String)]
-    public Guid UnidadResponsableId { get; set; } // Agrega esto
+    public Guid UnidadResponsableId { get; set; } // Si el usuario es administrador, este campo es nulo
 
     public string NombreDeUsuario { get; set; }
     public string Password { get; set; }
@@ -15,7 +15,7 @@ public class Usuario
     public string Apellido { get; set; }
     public string Correo { get; set; }
     public string Telefono { get; set; }
-    public string Rol { get; set; } // "admin" o "encargado"
+    public string Rol { get; set; } // admin/encargado/administrador
     public string Estado { get; set; } // "activo" o "inactivo"
     public DateTime FechaAlta { get; set; }
     public DateTime? FechaBaja { get; set; }

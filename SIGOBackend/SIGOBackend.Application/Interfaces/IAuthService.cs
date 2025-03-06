@@ -1,6 +1,8 @@
-﻿namespace SIGOBackend.Application.Interfaces;
+﻿using SIGOBackend.Application.DTOs;
 
-public class IAuthService
+namespace SIGOBackend.Application.Interfaces;
+
+public interface IAuthService
 {
-    
+    Task<LoginResponseDTO> Login(LoginResponseDTO loginDto);
 }
