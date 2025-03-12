@@ -57,3 +57,5 @@ Esto iniciará un contenedor de MongoDB en segundo plano (`-d`) y mapeará el pu
 📌 Beneficio:
 
     Permite gestionar los edificios por unidad responsable de manera clara.
+
+    

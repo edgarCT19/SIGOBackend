@@ -20,9 +20,9 @@ namespace SIGOBackend.Application.Repositories
             return await _usuarios.Find(u => u.Id == id).FirstOrDefaultAsync();
         }
 
-        public async Task<Usuario> GetByCorreoAsync(string userName)
+        public async Task<Usuario> GetByCorreoAsync(string Correo)
         {
-            return await _usuarios.Find(u => u.Correo == userName).FirstOrDefaultAsync();
+            return await _usuarios.Find(u => u.Correo == Correo).FirstOrDefaultAsync();
         }
 
         public async Task<Usuario> GetByUsuarioAsync(string usuario)

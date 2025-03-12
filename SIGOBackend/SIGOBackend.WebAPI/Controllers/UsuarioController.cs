@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SIGOBackend.Application.Services;
 using SIGOBackend.Domain.Entities;
+using SIGOBackend.Application.DTOs;
 
 namespace SIGOBackend.WebAPI.Controllers
 {
@@ -16,15 +17,15 @@ namespace SIGOBackend.WebAPI.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] Usuario usuario)
+        public async Task<IActionResult> Login([FromBody] LoginDTO credenciales)
         {
-            var user = await _usuarioService.AuthenticateAsync(usuario.NombreDeUsuario, usuario.Password);
+            var user = await _usuarioService.AuthenticateAsync(credenciales);
             if (user == null) return Unauthorized();
             return Ok(new { Token = "generar_jwt_aquí" });
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] Usuario usuario)
+        public async Task<IActionResult> Register([FromBody] RegisterUserDTO usuario)
         {
             await _usuarioService.AddUsuarioAsync(usuario);
             return Ok();

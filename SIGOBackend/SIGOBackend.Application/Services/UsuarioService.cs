@@ -1,4 +1,5 @@
 ﻿// SIGOBackend.Application/Services/UsuarioService.cs
+using SIGOBackend.Application.DTOs;
 using SIGOBackend.Application.Interfaces;
 using SIGOBackend.Domain.Entities;
 using System.Threading.Tasks;
@@ -14,17 +15,37 @@ namespace SIGOBackend.Application.Services
             _usuarioRepository = usuarioRepository;
         }
 
-        public async Task<Usuario> AuthenticateAsync(string usuario, string password)
+        public async Task<LoginResponseDTO> AuthenticateAsync(LoginDTO credenciales)
         {
-            var user = await _usuarioRepository.GetByUsuarioAsync(usuario);
-            if (user == null || user.Password != password) // Aquí deberías usar un hash para comparar contraseñas
+            var user = await _usuarioRepository.GetByUsuarioAsync(credenciales.Correo);
+            if (user == null || user.Password != credenciales.Password) // Aquí deberías usar un hash para comparar contraseñas
                 return null;
-            return user;
+
+            return new LoginResponseDTO
+            {
+                UserId = user.Id,
+                Token = "generar_jwt_aquí"
+            };
         }
 
-        public async Task AddUsuarioAsync(Usuario usuario)
+        public async Task AddUsuarioAsync(RegisterUserDTO usuario)
         {
-            await _usuarioRepository.AddAsync(usuario);
+            Guid userGuid;
+            Usuario existingUser;
+            do
+            {
+                userGuid = Guid.NewGuid();
+                existingUser = await _usuarioRepository.GetByIdAsync(userGuid);
+            } while (existingUser != null);
+            await _usuarioRepository.AddAsync(new Usuario
+            {
+                Id = userGuid,
+                Nombre = usuario.Nombre,
+                Apellido = usuario.Apellido,
+                Correo = usuario.Correo,
+                NombreDeUsuario = usuario.NombreDeUsuario,
+                Password = usuario.Password // Aquí deberías usar un hash para guardar contraseñas
+            });
         }
 
         // Implementa otros métodos según sea necesario
