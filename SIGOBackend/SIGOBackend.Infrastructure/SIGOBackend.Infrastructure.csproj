@@ -1,13 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.0" />
-    <PackageReference Include="MongoDB.Driver" Version="3.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.3" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.0.1" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.0.1" />
+    <PackageReference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect" Version="8.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\SIGOBackend.Application\SIGOBackend.Application.csproj" />
     <ProjectReference Include="..\SIGOBackend.Domain\SIGOBackend.Domain.csproj" />
+    <ProjectReference Include="..\MyApi.Domain\MyApi.Domain.csproj" />
+    <ProjectReference Include="..\MyApi.Infrastructure\MyApi.Infrastructure.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

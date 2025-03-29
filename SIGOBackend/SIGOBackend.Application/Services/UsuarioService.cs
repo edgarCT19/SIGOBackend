@@ -9,10 +9,12 @@ namespace SIGOBackend.Application.Services
     public class UsuarioService
     {
         private readonly IUsuarioRepository _usuarioRepository;
+        private readonly ITokenService _tokenService; // Si decides usar un servicio de token para generar JWT
 
-        public UsuarioService(IUsuarioRepository usuarioRepository)
+        public UsuarioService(IUsuarioRepository usuarioRepository, ITokenService tokenService)
         {
             _usuarioRepository = usuarioRepository;
+            _tokenService = tokenService; // Si decides usar un servicio de token para generar JWT
         }
 
         public async Task<LoginResponseDTO> AuthenticateAsync(LoginDTO credenciales)
@@ -20,11 +22,12 @@ namespace SIGOBackend.Application.Services
             var user = await _usuarioRepository.GetByUsuarioAsync(credenciales.Correo);
             if (user == null || user.Password != credenciales.Password) // Aquí deberías usar un hash para comparar contraseñas
                 return null;
+            var token = _tokenService.GenerateToken(user);
 
             return new LoginResponseDTO
             {
                 UserId = user.Id,
-                Token = "generar_jwt_aquí"
+                Token = token,
             };
         }
 
@@ -46,6 +49,13 @@ namespace SIGOBackend.Application.Services
                 NombreDeUsuario = usuario.NombreDeUsuario,
                 Password = usuario.Password // Aquí deberías usar un hash para guardar contraseñas
             });
+        }
+
+        public async Task<List<Usuario>?> GetUsuarios()
+        {
+            var user = await _usuarioRepository.GetAllAsync();
+            if (user == null) return null;
+            return [.. user];
         }
 
         // Implementa otros métodos según sea necesario

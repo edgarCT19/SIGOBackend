@@ -2,6 +2,7 @@
 using SIGOBackend.Application.Services;
 using SIGOBackend.Domain.Entities;
 using SIGOBackend.Application.DTOs;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SIGOBackend.WebAPI.Controllers
 {
@@ -21,7 +22,7 @@ namespace SIGOBackend.WebAPI.Controllers
         {
             var user = await _usuarioService.AuthenticateAsync(credenciales);
             if (user == null) return Unauthorized();
-            return Ok(new { Token = "generar_jwt_aquí" });
+            return Ok(user);
         }
 
         [HttpPost("register")]
@@ -29,6 +30,15 @@ namespace SIGOBackend.WebAPI.Controllers
         {
             await _usuarioService.AddUsuarioAsync(usuario);
             return Ok();
+        }
+
+        [Authorize]
+        [HttpGet("usuarios")]
+        public async Task<IActionResult> GetUsuarios()
+        {
+            var usuarios = await _usuarioService.GetUsuarios();
+            if (usuarios == null) return NotFound();
+            return Ok(usuarios);
         }
     }
 }
