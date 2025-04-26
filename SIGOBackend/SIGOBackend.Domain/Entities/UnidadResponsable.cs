@@ -1,12 +1,13 @@
 ﻿namespace SIGOBackend.Domain.Entities
 {
+    // CATALOGO INCIAL Y REGISTRO EXTRA
     public class UnidadResponsable
     {
         public Guid Id { get; set; }
         public string Nombre { get; set; }
         public Guid CampusId { get; set; } // Referencia al Campus
         public DateTime FechaRegistro { get; set; }
-        public Guid RegistradoPor { get; set; } // Referencia al Usuario
+        public Guid RegistradoPor { get; set; } // Referencia al Usuario NO ES NECEESARIO
         public List<Subestacion> Subestaciones { get; set; }
         public Facturas Facturas { get; set; }
         public InventarioEnergético InventarioEnergético { get; set; }

@@ -15,7 +15,8 @@ public class Usuario
     public string Apellido { get; set; }
     public string Correo { get; set; }
     public string Telefono { get; set; }
-    public string Rol { get; set; } // admin/encargado/administrador
+    // GENERAL CATALOGO O SIMPOLEMENTE USAR EL FORMATO 1 - NOMBRE DE ROL
+    public string Rol { get; set; } // admin/encargado/administrador ADMIN, LECTOR, CAPTURISTA Y ENCARGADO DE LA UNIDAD RESPONSABLE 
     public string Estado { get; set; } // "activo" o "inactivo"
     public DateTime FechaAlta { get; set; }
     public DateTime? FechaBaja { get; set; }

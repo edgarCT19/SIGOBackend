@@ -1,5 +1,6 @@
 ﻿namespace SIGOBackend.Domain.Entities
 {
+    // CATALOGO INICIAL REQUERIDO
     public class Campus
     {
         public Guid Id { get; set; }

@@ -4,9 +4,10 @@ namespace SIGOBackend.Domain.Entities
     {
         public Guid Id { get; set; }
         public string Nombre { get; set; }
-        public Guid EdificioId { get; set; } // Relación con Edificio
-        public Guid UnidadResponsableId { get; set; } // Relación con Unidad Responsable
+        public Guid EdificioId { get; set; } // NO NECESARIO
+        public Guid UnidadResponsableId { get; set; } // Relaciï¿½n con Unidad Responsable
         public string Encargado { get; set; }
         public string TelefonoEncargado { get; set; }
+        public DateTime FechaDeRegistro { get; set; }
     }
 }
