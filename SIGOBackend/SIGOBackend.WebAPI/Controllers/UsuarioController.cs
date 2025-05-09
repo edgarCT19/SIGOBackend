@@ -32,7 +32,6 @@ namespace SIGOBackend.WebAPI.Controllers
             return Ok();
         }
 
-        [Authorize]
         [HttpGet("usuarios")]
         public async Task<IActionResult> GetUsuarios()
         {
