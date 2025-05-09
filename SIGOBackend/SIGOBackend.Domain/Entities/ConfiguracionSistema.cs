@@ -1,7 +1,11 @@
-﻿namespace SIGOBackend.Domain.Entities
+﻿using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson;
+
+namespace SIGOBackend.Domain.Entities
 {
     public class ConfiguracionSistema
     {
+        [BsonRepresentation(BsonType.String)]
         public Guid Id { get; set; }
         public Logos Logos { get; set; }
         public Tema Tema { get; set; }

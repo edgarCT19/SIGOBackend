@@ -10,8 +10,6 @@
   <ItemGroup>
     <ProjectReference Include="..\SIGOBackend.Application\SIGOBackend.Application.csproj" />
     <ProjectReference Include="..\SIGOBackend.Domain\SIGOBackend.Domain.csproj" />
-    <ProjectReference Include="..\MyApi.Domain\MyApi.Domain.csproj" />
-    <ProjectReference Include="..\MyApi.Infrastructure\MyApi.Infrastructure.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

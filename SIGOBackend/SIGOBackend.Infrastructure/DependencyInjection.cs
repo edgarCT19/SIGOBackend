@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authentication.BearerToken;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using SIGOBackend.Application.Interfaces.IServices;
 
 namespace SIGOBackend.Infrastructure
 {
@@ -20,9 +21,13 @@ namespace SIGOBackend.Infrastructure
             var databaseName = configuration.GetSection("MongoDB:DatabaseName").Value;
 
             services.AddSingleton<MongoDbContext>(sp => new MongoDbContext(connectionString, databaseName));
+            // REPOSITORIOS
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+            services.AddScoped<ISubestacionRepository, SubestacionRepository>();
+            services.AddScoped<ICampusRepository, CampusRepository>();
+            // SERVICIOS
             services.AddScoped<UsuarioService>();
-
+            services.AddScoped<ICampusService, CampusService>();
             // token
             var jwtSettings = new JwtSettings();
             configuration.Bind(nameof(JwtSettings), jwtSettings);

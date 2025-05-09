@@ -11,6 +11,17 @@
     ```
 
 Esto iniciará un contenedor de MongoDB en segundo plano (`-d`) y mapeará el puerto 27017 del contenedor al puerto 27017 de tu máquina local.
+```bash
+# para levantar la db directamente
+docker run -d \
+  --name mongo44 \
+  -p 27017:27017 \
+  -v mongo_data:/data/db \
+  -e MONGO_INITDB_ROOT_USERNAME=admin \
+  -e MONGO_INITDB_ROOT_PASSWORD=admin123 \
+  mongo:4.4
+
+```
 
 # NOTAS 
 1. Relación entre UnidadResponsable y Facturas
@@ -58,4 +69,3 @@ Esto iniciará un contenedor de MongoDB en segundo plano (`-d`) y mapeará el pu
 
     Permite gestionar los edificios por unidad responsable de manera clara.
 
-    
